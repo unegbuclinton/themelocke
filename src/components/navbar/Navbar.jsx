@@ -27,71 +27,28 @@ function Navbar() {
 
     // Hooks for menu items links
 
-    const [click, setClick] = useState(false)
-    const [crypto, setCrypto] = useState(false)
-    const [proj, setProj] = useState(false)
-    const [ecomm, setEcomm] = useState(false)
-    const [email, setEmail] = useState(false)
-    const [element, setElement] = useState(false)
-    const [advance, setAdvance] = useState(false)
-    const [chart, setChart] = useState(false)
-    const [pages, setPages] = useState(false)
-    const [auth, setAuth] = useState(false)
-    const [btn ,setBtn] = useState (false)
+    const [uiState, setUiState] = useState({
+        click: false,
+        crypto: false,
+        proj: false,
+        auth: false,
+        btn: false,
+        menu: false,
+        pages: false,
+        auth: false,
+        advance: false,
+        chart: false,
+        element: false,
+        email: false,
+        ecomm: false
+    });
 
-
-
-
-    const showAuth = () => {
-
-        setAuth(!auth)
-
+    const setUI = (ui_name) => {
+        setUiState({...uiState, [ui_name]: !uiState[ui_name]})
     }
 
+   
 
-    const changeBtn = () => {
-
-        setBtn(!btn)
-
-
-    }
-    const showPages = () => {
-
-        setPages(!pages)
-    }
-    const showAdvance = () => {
-
-        setAdvance(!advance)
-    }
-    const showChart = () => {
-
-        setChart(!chart)
-    }
-    const showMenu = () => {
-
-        setMenu(!menu)
-    }
-    const showUI = () => {
-
-        setElement(!element)
-    }
-    const showEmail = () => {
-        setEmail(!email)
-    }
-    const showEcomm = () => {
-        setEcomm(!ecomm)
-    }
-    const showBitcoin = () => {
-        setCrypto(!crypto)
-    }
-
-    const showProj = () => {
-        setProj(!proj)
-    }
-
-    const showLink = () => {
-        setClick(!click)
-    }
 
     return (
         <div className="navbar">
@@ -99,7 +56,7 @@ function Navbar() {
 
             <div className='navbar__wrapper'>
                 <div className="navbar__left">
-                    <div className="navbar__bars" onClick={showMenu}>
+                    <div className="navbar__bars" onClick={() => { setUI('menu') }}>
                         <FaBars size='20' />
                     </div>
                 </div>
@@ -113,7 +70,7 @@ function Navbar() {
                     </div>
                     <div className="navbar__notification">
                         <GrNotification size='20' />
-                        <span className='note'> 3 </span>
+                        <span className='note'>  </span>
                     </div>
                     <div className="navbar__profile__pix">
                         <img src={urch} alt="" className='navbar__img' />
@@ -124,7 +81,7 @@ function Navbar() {
                 </div>
             </div>
 
-            <div className={menu ? "menu__bar__wrapper__active" : 'menu__bar__wrapper'}>
+            <div className={uiState.menu ? "menu__bar__wrapper__active" : 'menu__bar__wrapper'}>
                 <div className="menu__bar">
                     <div className="menu__header">
                         <p className="header">
@@ -140,11 +97,11 @@ function Navbar() {
                         </div>
                     </div>
                     <div className="menu__btns">
-                        <button className={btn ? 'menu__btn' : "menu__btn__nostyle"} onClick={changeBtn} >
+                        <button className={uiState.btn ? 'menu__btn' : "menu__btn__nostyle"} onClick={() => {setUI('btn')}} >
                             Main
                         </button>
 
-                        <button className={btn ? 'menu__btn__nostyle' : "menu__btn"} onClick={changeBtn}>
+                        <button className={uiState.btn ? 'menu__btn__nostyle' : "menu__btn"} onClick={() => {setUI('btn')}}>
                             Extra
                         </button>
                     </div>
@@ -157,18 +114,18 @@ function Navbar() {
                         <p className='menu__unique__2'>UNIQUE DASHBOARD</p>
                     </div>
 
-                    <div className={click ? "analytics__wrapper__active" : "analytics__wrapper"} >
+                    <div className={uiState.click ? "analytics__wrapper__active" : "analytics__wrapper"} >
                         <span className="analytics__icon">
                             < BiAnalyse />
                         </span>
-                        <div className="analytics" onClick={showLink} >
+                        <div className="analytics" onClick={() => { setUI('click')}} >
 
                             <p className='analytic__ana'> Analytics</p>
                         </div>
 
                     </div>
 
-                    <ul className={click ? 'analytic__links__active' : 'analytic__links'}>
+                    <ul className={uiState.click ? 'analytic__links__active' : 'analytic__links'}>
                         <li className='analytic__link__item'>
                             <a href="#" className='analytic__link'> DashBoard</a>
                         </li>
@@ -183,14 +140,14 @@ function Navbar() {
                     </ul>
 
 
-                    <div className={crypto ? "crypto__wrapper__active" : "crypto__wrapper"}>
+                    <div className={uiState.crypto ? "crypto__wrapper__active" : "crypto__wrapper"}>
                         <span className="crypto__icon"> <BiBitcoin size='20' /> </span>
-                        <div className="crypto" onClick={showBitcoin}>
+                        <div className="crypto" onClick={() => {setUI('crypto')}}>
                             <p className='crypto__coin'> Crypto</p>
                         </div>
                     </div>
 
-                    <ul className={crypto ? 'crypto__links__active' : 'crypto__links'}>
+                    <ul className={uiState.crypto ? 'crypto__links__active' : 'crypto__links'}>
                         <li className='crypto__link__item'>
                             <a href="#" className='crypto__link'> DashBoard</a>
                         </li>
@@ -217,17 +174,17 @@ function Navbar() {
                     </ul>
                 </div>
 
-                <div className={proj ? "projects__wrapper__active" : "projects__wrapper"}>
+                <div className={uiState.proj ? "projects__wrapper__active" : "projects__wrapper"}>
 
                     <span className='project__icon'>  <IoIosAnalytics /> </span>
-                    <div className="projects__active" onClick={showProj}>
+                    <div className="projects" onClick={() => { setUI('proj')}}>
 
                         <p className='projects__coin'> Projects</p>
                     </div>
 
                 </div>
 
-                <ul className={proj ? 'projects__links__active' : 'projects__links'}>
+                <ul className={uiState.proj ? 'projects__links__active' : 'projects__links'}>
                     <li className='projects__link__item'>
                         <a href="#" className='projects__link'> DashBoard</a>
                     </li>
@@ -253,16 +210,16 @@ function Navbar() {
                     </li>
                 </ul>
 
-                <div className={ecomm ? "ecommerce__wrapper__active" : "ecommerce__wrapper"}>
+                <div className={uiState.ecomm ? "ecommerce__wrapper__active" : "ecommerce__wrapper"}>
                     <span className="ecommerce__icon">
                         <AiOutlineShoppingCart size='20' />
                     </span>
-                    <div className="ecommerce" onClick={showEcomm}>
+                    <div className="ecommerce" onClick={() => { setUI('ecomm')}}>
                         <p className='ecommerce__coin'> E-commerce</p>
                     </div>
                 </div>
 
-                <ul className={ecomm ? 'ecommerce__links__active' : 'ecommerce__links'}>
+                <ul className={uiState.ecomm ? 'ecommerce__links__active' : 'ecommerce__links'}>
                     <li className='ecommerce__link__item'>
                         <a href="#" className='ecommerce__link'> DashBoard</a>
                     </li>
@@ -295,16 +252,16 @@ function Navbar() {
                         <p className='menu__unique__2'>MORDER APPLICATIONS</p>
                     </div>
 
-                    <div className={email ? "email__wrapper__active" : "email__wrapper"}>
+                    <div className={uiState.email ? "email__wrapper__active" : "email__wrapper"}>
 
-                        <div className="Email" onClick={showEmail}>
+                        <div className="Email" onClick={() => {setUI('email')}}>
                             <span className="email__icon">
                                 <HiOutlineMail />
                             </span>
                             <p className='email__box'> E-mail</p>
                         </div>
 
-                        <ul className={email ? "email__links__active" : 'email__links'}>
+                        <ul className={uiState.email ? "email__links__active" : 'email__links'}>
                             <li className="email__link__box">
                                 <a href="#" className='email__link'> Inbox</a>
                             </li>
@@ -342,16 +299,16 @@ function Navbar() {
                 </div>
 
 
-                <div className={element ? "ui__wrapper__active" : "ui__wrapper"}>
+                <div className={uiState.element ? "ui__wrapper__active" : "ui__wrapper"}>
                     <span className="ui__icon">
                         <BiPlanet />
                     </span>
-                    <div className="ui" onClick={showUI}>
+                    <div className="ui" onClick={() => { setUI('element')}}>
                         <p className='ui__box'> UI Element</p>
                     </div>
                 </div>
 
-                <ul className={element ? "ui__links__active" : "ui__links"}>
+                <ul className={uiState.element ? "ui__links__active" : "ui__links"}>
                     <li className="ui__link__box">
                         <a href="#" className='ui__link'> Alert </a>
                     </li>
@@ -369,17 +326,17 @@ function Navbar() {
                     </li>
                 </ul>
 
-                <div className={advance ? "advance__wrapper__active" : "advance__wrapper"}>
+                <div className={uiState.advance ? "advance__wrapper__active" : "advance__wrapper"}>
                     <span className="advance__icon">
                         <FaOsi />
                     </span>
-                    <div className="advance" onClick={showAdvance}>
+                    <div className="advance" onClick={() => {setUI('advance')}}>
                         <p className='advance__box'> Advance UI</p>
                     </div>
 
                 </div>
 
-                <ul className={advance ? "advance__links__active" : "advance__links"}>
+                <ul className={uiState.advance ? "advance__links__active" : "advance__links"}>
                     <li className="advance__link__box">
                         <a href="#" className='advance__link'> Animation </a>
                     </li>
@@ -397,17 +354,17 @@ function Navbar() {
                     </li>
                 </ul>
 
-                <div className={chart ? "chart__wrapper__active" : "chart__wrapper"}>
+                <div className={uiState.chart ? "chart__wrapper__active" : "chart__wrapper"}>
                     <span className='chart__icon'>
                         <AiOutlineAreaChart size='20' />
                     </span>
-                    <div className="chart" onClick={showChart}>
+                    <div className="chart" onClick={() => { setUI('chart')}}>
                         <p className='chart__box'> Chart </p>
                     </div>
                 </div>
 
 
-                <ul className={chart ? "chart__links__active" : "chart__links"}>
+                <ul className={uiState.chart ? "chart__links__active" : "chart__links"}>
                     <li className="chart__link__box">
                         <a href="#" className='charGiConcentrationOrbt__link'> Apex</a>
                     </li>
@@ -428,11 +385,11 @@ function Navbar() {
                     </div>
                 </div>
 
-                <div className={pages ? "pages__wrapper__active" : "pages__wrapper"}>
+                <div className={uiState.pages ? "pages__wrapper__active" : "pages__wrapper"}>
                     <span className="pages__icon">
                         <Fa500Px />
                     </span>
-                    <div className="pages" onClick={showPages}>
+                    <div className="pages" onClick={() => {setUI('pages')}}>
                         <p className="pages__box">
                             Pages
                         </p>
@@ -440,7 +397,7 @@ function Navbar() {
                 </div>
 
 
-                <ul className={pages ? "pages__links__active" : "pages__links"}>
+                <ul className={uiState.pages ? "pages__links__active" : "pages__links"}>
                     <li className="pages__link__box">
                         <a href="#" className='pages__link'> Apex</a>
                     </li>
@@ -454,11 +411,11 @@ function Navbar() {
                     </li>
                 </ul>
 
-                    <div className={auth ? "auth__wrapper__active" : "auth__wrapper"}>
+                    <div className={uiState.auth ? "auth__wrapper__active" : "auth__wrapper"}>
                         <span className="auth__icon">
                             <SiAuth0 />
                         </span>
-                        <div className="auth" onClick={showAuth}>
+                        <div className="auth" onClick={() => {setUI('auth')}}>
                             <p className="auth__box">
                                 Authentic
                             </p>
@@ -467,7 +424,7 @@ function Navbar() {
                 
 
 
-                <ul className={auth ? "auth__links__active" : "auth__links"}>
+                <ul className={uiState.auth ? "auth__links__active" : "auth__links"}>
                     <li className="auth__link__box">
                         <a href="#" className='auth__link'> Login</a>
                     </li>

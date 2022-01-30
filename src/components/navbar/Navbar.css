@@ -5,8 +5,8 @@
     align-items: center;
     padding: 15px;
     background: #fff;
-    border-bottom: 1px solid rgb(231, 222, 222);;
-    overflow: hidden;
+    border-bottom: 1px solid rgb(243, 237, 237);
+    /* overflow: hidden; */
     position: fixed;
     top: 0;
     width: 100%;
@@ -20,7 +20,7 @@
     align-items: center;
     padding: 6px;
     border-radius: 3px;
-    background: rgb(231, 222, 222);
+    background: rgb(245, 238, 238);
 }
 
 .navbar__message{
@@ -29,15 +29,26 @@
     align-items: center;
     padding: 5px;
     border-radius: 3px;
-    background: rgb(231, 222, 222);
+    background: rgb(245, 238, 238);
 }
 .navbar__notification{
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     padding: 6px;
     border-radius: 3px;
-    background: rgb(231, 222, 222);
+    background: rgb(245, 238, 238);
+}
+
+.note{
+    width: 8px;
+    height: 8px;
+    background: red;
+    top: 3px;
+    right: 7px;
+    border-radius: 50%;
+    position: absolute;
 }
 
 .navbar__settings{
@@ -46,7 +57,7 @@
     align-items: center;
     padding: 6px;
     border-radius: 3px;
-    background: rgb(231, 222, 222);
+    background: rgb(245, 238, 238);
 }
 .navbar__right{
     display: flex;
@@ -72,8 +83,8 @@
 .menu__bar__wrapper__active{
     width: 80%;
     height: 100vh;
-    position: relative;
-    overflow-y: scroll;
+    position: sticky;
+    overflow-y: auto;
     background: rgb(15, 1, 28);
     left: 0;
     transition: .5s;
@@ -130,16 +141,16 @@
     justify-content: center;
     height: 50px;
     border: none;
-    background:rgb(47, 45, 45) ;
+    background:#fff;
     transition: .4s ease-in;
 }
 
 .menu__btn__nostyle{
     width: 120px;
     height: 30px;
-    background-color: rgb(47, 45, 45);
+    background-color: #fff;
     border: none;
-    color: #fff;
+    color: #000;
     font-size: 18px;
     border-radius: 5px;
     transition: .3s ease-in;
@@ -190,10 +201,14 @@
     background: transparent;
     width: 90%;
     align-items: center;
-    margin: 0px auto;
+    margin: 20px auto;
     padding: 10px;
     border-radius: 5px;
     transition: background-color .3s ease;
+}
+.analytics{
+    width: 100%;
+    cursor: pointer;
 }
 
 .analytics__icon{
@@ -236,19 +251,21 @@
     align-items: center;
     background: red;
     width: 90%;
-    margin: auto;
+    margin: 20px auto;
     padding: 10px;
     border-radius: 5px;
     transition: background-color .3s ease;
 }
-
-
+.crypto{
+    width: 100%;
+    cursor: pointer;
+}
 .crypto__wrapper{
     display: flex;
     background: transparent;
     width: 90%;
     align-items: center;
-    margin: auto;
+    margin: 20px auto;
     padding: 10px;
     border-radius: 5px;
     transition: background-color .3s ease;
@@ -293,10 +310,15 @@
     align-items: center;
     background: red;
     width: 90%;
-    margin: auto;
+    margin:20px auto;
     padding: 10px;
     border-radius: 5px;
     transition: background-color .3s ease;
+}
+
+.projects{
+    width: 100%;
+    cursor: pointer;
 }
 
 
@@ -305,7 +327,7 @@
     background: transparent;
     width: 90%;
     align-items: center;
-    margin: auto;
+    margin: 20px auto;
     padding: 10px;
     border-radius: 5px;
     transition: background-color .3s ease;
@@ -315,7 +337,8 @@
  padding-top: 7px;
  color: #fff;
 }
-.projects__active{
+
+.projects__coin{
    margin-left: 10px;
    color: #fff;
    font-weight: 500;
@@ -357,19 +380,23 @@
     align-items: center;
     background: red;
     width: 90%;
-    margin: 0px auto;
+    margin: 20px auto;
     padding: 10px;
     border-radius: 5px;
     transition: background-color .3s ease;
 }
 
+.ecommerce{
+    width: 100%;
+    cursor: pointer;
+}
 
 .ecommerce__wrapper{
     display: flex;
     background: transparent;
     width: 90%;
     align-items: center;
-    margin: 0px auto;
+    margin: 20px auto;
     padding: 10px;
     border-radius: 5px;
     transition: background-color .3s ease;
@@ -411,6 +438,10 @@
 
 /* App MORDERTION */
 
+.email{
+    width: 100%;
+    cursor: pointer;
+}
 .email__box{
     margin: 20px 0px 0px 50px;
     color: #fff;
@@ -681,6 +712,7 @@
     padding: 10px;
     border-radius: 5px;
     transition: background-color .3s ease;
+    margin-bottom: 50px;
 }
 
 
